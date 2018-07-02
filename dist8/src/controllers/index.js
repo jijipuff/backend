@@ -4,4 +4,8 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./ping.controller"));
+__export(require("./pizza.controller"));
+__export(require("./registration.controller"));
+__export(require("./login.controller"));
+__export(require("./user.controller"));
 //# sourceMappingURL=index.js.map

@@ -20,14 +20,6 @@ export class GoldenThreadApiApplication extends BootMixin(
   constructor(options?: ApplicationConfig) {
     super(options);
 
-    var dataSourceConfig = new juggler.DataSource({
-      name: "db",
-      connector: "memory"
-
-    });
-
-    this.dataSource(dataSourceConfig);
-
     // Set up the custom sequence
     this.sequence(MySequence);
 
@@ -41,6 +33,12 @@ export class GoldenThreadApiApplication extends BootMixin(
         nested: true,
       },
     };
+    var dataSourceConfig = new juggler.DataSource({
+      name: "db",
+      connector: "memory"
+
+    });
+    this.dataSource(dataSourceConfig);
   }
 
 
