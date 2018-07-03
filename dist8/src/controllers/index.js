@@ -8,4 +8,5 @@ __export(require("./pizza.controller"));
 __export(require("./registration.controller"));
 __export(require("./login.controller"));
 __export(require("./user.controller"));
+__export(require("./products.controller"));
 //# sourceMappingURL=index.js.map

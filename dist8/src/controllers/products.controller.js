@@ -15,34 +15,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // import {inject} from '@loopback/context';
 const repository_1 = require("@loopback/repository");
-const user_repository_1 = require("../repositories/user.repository");
 const rest_1 = require("@loopback/rest");
-const user_model_1 = require("../models/user.model");
-let RegistrationController = class RegistrationController {
-    constructor(UserRepo) {
-        this.UserRepo = UserRepo;
+const products_repository_1 = require("../repositories/products.repository");
+let ProductsController = class ProductsController {
+    constructor(ProductsRepo) {
+        this.ProductsRepo = ProductsRepo;
     }
-    async createRepository(user) {
-        if (!user.email || !user.password) {
-            throw new rest_1.HttpErrors.BadRequest('missing data');
-        }
-        let userExists = !!(await this.UserRepo.count({ email: user.email }));
-        if (!userExists) {
-            throw new rest_1.HttpErrors.BadRequest('user already exists');
-        }
-        return await this.UserRepo.create(user);
+    async findProducts() {
+        return await this.ProductsRepo.find();
     }
 };
 __decorate([
-    rest_1.post('/registration'),
-    __param(0, rest_1.requestBody()),
+    rest_1.get('/products'),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_model_1.User]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], RegistrationController.prototype, "createRepository", null);
-RegistrationController = __decorate([
-    __param(0, repository_1.repository(user_repository_1.UserRepository.name)),
-    __metadata("design:paramtypes", [user_repository_1.UserRepository])
-], RegistrationController);
-exports.RegistrationController = RegistrationController;
-//# sourceMappingURL=registration.controller.js.map
+], ProductsController.prototype, "findProducts", null);
+ProductsController = __decorate([
+    __param(0, repository_1.repository(products_repository_1.ProductsRepository)),
+    __metadata("design:paramtypes", [products_repository_1.ProductsRepository])
+], ProductsController);
+exports.ProductsController = ProductsController;
+//# sourceMappingURL=products.controller.js.map
